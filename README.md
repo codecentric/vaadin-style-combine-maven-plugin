@@ -35,7 +35,7 @@ To run the combine plugin:
 				<artifactId>vaadin-style-combine-maven-plugin</artifactId>
 				<version>1.0</version>
 				<configuration>
-    				<theme>centerdevice</theme>
+    				<theme>theme</theme>
   				</configuration>
 				<executions>
 					<execution>
