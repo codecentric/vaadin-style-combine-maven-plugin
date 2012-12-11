@@ -3,7 +3,7 @@
 
 	<groupId>de.codecentric.vaadin</groupId>
 	<artifactId>vaadin-style-combine-maven-plugin</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>vaadin-style-combine-maven-plugin</name>
