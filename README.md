@@ -1,15 +1,15 @@
 vaadin-style-combine-maven-plugin
 =================================
 
-Maven plugin for vombining multiple css files into a single styles.css
+Maven plugin for combining multiple css files into a single styles.css
 
 This maven plugin will combine style.css files so that only one request will be made.
 It works in a limited amount of scenarios, similar to the way Vaadin does it.
 It requires a theme to have a "styles.css" like this:
 
-@import "../reindeer/styles.css";
-@import "general/general.css";
-@import "header/header.css";
+				@import "../reindeer/styles.css";
+				@import "general/general.css";
+				@import "header/header.css";
 
 
 After it has run, it will generate a folder "generated-vaadin-styles" in "target".
