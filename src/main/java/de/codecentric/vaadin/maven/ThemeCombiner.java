@@ -89,8 +89,15 @@ public class ThemeCombiner {
 		    if (importFile.isFile()) {
 			String currentFolder = folder;
 			if (importFilename.contains("/")) {
-			    currentFolder = currentFolder + "/"
-				    + importFilename.substring(0, importFilename.lastIndexOf("/"));
+			    if (currentFolder != null && currentFolder.length() > 0) {
+				currentFolder = currentFolder
+					+ "/"
+					+ importFilename.substring(0,
+						importFilename.lastIndexOf("/"));
+			    } else {
+				currentFolder = importFilename.substring(0,
+					importFilename.lastIndexOf("/"));
+			    }
 			}
 			processCSSFile(stylesCssDir, importFile, currentFolder, themeName,
 				combinedCss);
@@ -113,8 +120,6 @@ public class ThemeCombiner {
     }
 
     private String updateUrls(String folder, String themeName, String strLine) {
-	// Define image url prefix
-	String urlPrefix = "";
 	if (strLine.indexOf("url(/") > 0) {
 	    // Do nothing for urls beginning with /
 	} else if (strLine.indexOf("url(../") >= 0) {
@@ -127,7 +132,7 @@ public class ThemeCombiner {
 		strLine = strLine.replaceAll("url\\(../", ("url\\("));
 	    }
 	    // add remaining path segments to urlPrefix
-	    StringBuilder sb = new StringBuilder(urlPrefix);
+	    StringBuilder sb = new StringBuilder();
 	    for (int i = 0; i < segmentCount; i++) {
 		sb.append(folderSegments[i]);
 		sb.append("/");
@@ -135,7 +140,7 @@ public class ThemeCombiner {
 	    strLine = strLine.replaceAll("url\\(", ("url\\(" + sb.toString()));
 
 	} else {
-	    strLine = strLine.replaceAll("url\\(", ("url\\(" + urlPrefix + folder + "/"));
+	    strLine = strLine.replaceAll("url\\(", ("url\\(" + folder + "/"));
 
 	}
 	return strLine;
