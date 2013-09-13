@@ -140,7 +140,11 @@ public class ThemeCombiner {
 	    strLine = strLine.replaceAll("url\\(", ("url\\(" + sb.toString()));
 
 	} else {
-	    strLine = strLine.replaceAll("url\\(", ("url\\(" + folder + "/"));
+	    if (strLine.indexOf("url('") > 0) {
+		strLine = strLine.replaceAll("url\\('", ("url\\('" + folder + "/"));
+	    } else {
+		strLine = strLine.replaceAll("url\\(", ("url\\(" + folder + "/"));
+	    }
 
 	}
 	return strLine;
